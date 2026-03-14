@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
+import { Crown } from "lucide-react";
 
-const Card3D = ({ content, description, className, badgeText }) => {
+const Card3D = ({ content, description, className, badgeText, crown }) => {
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   const animationFrameRef = useRef(undefined);
@@ -101,22 +102,30 @@ const Card3D = ({ content, description, className, badgeText }) => {
   }, []);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative mt-10 ${className}`}>
       <div className="absolute inset-0 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-red-500 opacity-70 blur-sm"></div>
+      {crown && (
+        <Crown
+          className="absolute z-10 left-1/2 -translate-x-1/2 -top-12 text-yellow-500 animate-ping"
+          size={30}
+        />
+      )}
       <Badge
         variant="outline"
-        className="absolute z-10 left-1/2 -translate-x-1/2 -top-3 bg-amber-200 p-4 px-6 text-lg"
+        className="absolute z-10 left-1/2 -translate-x-1/2 -top-5 bg-amber-200 p-4 px-4 sm:p-5 sm:px-6 text-[clamp(0.75rem,3vw,1.35rem)]"
       >
         {badgeText}
       </Badge>
       <Card
         ref={cardRef}
-        className="relative max-w-md rounded-xl border border-white/10 p-10"
+        className="relative max-w-md rounded-xl border border-white/10 sm:p-10"
       >
         <CardHeader className={"text-center"}>
-          <CardTitle className={"text-2xl"}>{content}</CardTitle>
+          <CardTitle className={"text-[clamp(0.8rem,5vw,1.5rem)] "}>
+            {content}
+          </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6 text-center text-xl">
+        <CardContent className="space-y-6 text-center text-[clamp(1rem,5vw,2rem)] ">
           <p>{description}</p>
         </CardContent>
       </Card>

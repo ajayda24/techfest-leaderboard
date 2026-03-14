@@ -14,6 +14,7 @@ export default function Hero() {
         description={"1200 Points"}
         className={"w-60"}
         badgeText={"Leader"}
+        crown
       />
       <Card3D
         content={"ME"}
