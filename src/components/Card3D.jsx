@@ -6,7 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 import { Crown } from "lucide-react";
 
-const Card3D = ({ content, description, className, badgeText, crown }) => {
+const Card3D = ({
+  content,
+  description,
+  className,
+  badgeText,
+  badgeColor,
+  crown,
+  glow,
+}) => {
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   const animationFrameRef = useRef(undefined);
@@ -102,31 +110,31 @@ const Card3D = ({ content, description, className, badgeText, crown }) => {
   }, []);
 
   return (
-    <div className={`relative mt-10 ${className}`}>
-      <div className="absolute inset-0 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-red-500 opacity-70 blur-sm"></div>
+    <div className={`relative mt-10 ${crown && "z-20"} ${className}`}>
+      {glow ? (
+        <div className="absolute -inset-1 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-yellow-500 opacity-70 blur-xs"></div>
+      ) : (
+        <div className="absolute inset-0  rounded-xl bg-linear-to-r from-blue-300 via-violet-500 to-blue-400 opacity-70 blur-xs"></div>
+      )}
       {crown && (
         <Crown
-          className="absolute z-10 left-1/2 -translate-x-1/2 -top-12 text-yellow-500 animate-ping"
+          className="absolute z-10 left-1/2 -translate-x-1/2 -top-12 text-yellow-500 animate-pulse"
           size={30}
         />
       )}
       <Badge
         variant="outline"
-        className="absolute z-10 left-1/2 -translate-x-1/2 -top-5 bg-amber-200 p-4 px-4 sm:p-5 sm:px-6 text-[clamp(0.75rem,3vw,1.35rem)]"
+        className={`absolute z-10 left-1/2 -translate-x-1/2 -top-5 ${badgeColor} p-3 px-4 sm:p-5 sm:px-6 text-[clamp(0.65rem,3vw,1.35rem)] `}
       >
         {badgeText}
       </Badge>
       <Card
         ref={cardRef}
-        className="relative max-w-md rounded-xl border border-white/10 sm:p-10"
+        className={`relative max-w-md rounded-xl border border-white/10 sm:p-10 bg-gray-950 text-white justify-end ${crown && "h-32 sm:h-50"}`}
       >
-        <CardHeader className={"text-center"}>
-          <CardTitle className={"text-[clamp(0.8rem,5vw,1.5rem)] "}>
-            {content}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6 text-center text-[clamp(1rem,5vw,2rem)] ">
-          <p>{description}</p>
+        <CardContent className="text-center">
+          <p className={"text-[clamp(0.6rem,4vw,1.5rem)] "}>{content}</p>
+          <p className=" text-[clamp(1rem,6vw,2rem)] ">{description}</p>
         </CardContent>
       </Card>
     </div>
