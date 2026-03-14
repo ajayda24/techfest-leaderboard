@@ -111,14 +111,15 @@ const Card3D = ({
 
   return (
     <div className={`relative mt-10 ${crown && "z-20"} ${className}`}>
-      {glow ? (
-        <div className="absolute -inset-1 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-yellow-500 opacity-70 blur-xs"></div>
-      ) : (
-        <div className="absolute inset-0  rounded-xl bg-linear-to-r from-blue-300 via-violet-500 to-blue-400 opacity-70 blur-xs"></div>
+      {glow && (
+        <>
+          <div class="absolute inset-0 bg-yellow-500 blur-md opacity-40"></div>
+          <div className="absolute inset-0 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-yellow-500 opacity-70 blur-xs"></div>
+        </>
       )}
       {crown && (
         <Crown
-          className="absolute z-10 left-1/2 -translate-x-1/2 -top-12 text-yellow-500 animate-pulse"
+          className="absolute z-10 left-1/2 -translate-x-1/2 -top-10 text-yellow-500 animate-pulse"
           size={30}
         />
       )}
@@ -130,11 +131,19 @@ const Card3D = ({
       </Badge>
       <Card
         ref={cardRef}
-        className={`relative max-w-md rounded-xl border border-white/10 sm:p-10 bg-gray-950 text-white justify-end ${crown && "h-32 sm:h-50"}`}
+        className={`relative max-w-md rounded-xl border border-white/90 sm:p-10 bg-gray-950 text-white justify-center ${crown && "h-28 sm:h-50"}`}
       >
         <CardContent className="text-center">
-          <p className={"text-[clamp(0.6rem,4vw,1.5rem)] "}>{content}</p>
-          <p className=" text-[clamp(1rem,6vw,2rem)] ">{description}</p>
+          <p
+            className={` font-semibold ${crown ? "text-yellow-400 text-[clamp(0.8rem,5vw,1.8rem)]" : "text-white text-[clamp(0.6rem,4vw,1.5rem)]"}`}
+          >
+            {content}
+          </p>
+          <p
+            className={`${crown ? "text-[clamp(0.9rem,5vw,1.8rem)]" : "text-[clamp(0.6rem,4vw,1.5rem)]"} orbitron-font`}
+          >
+            {description}
+          </p>
         </CardContent>
       </Card>
     </div>

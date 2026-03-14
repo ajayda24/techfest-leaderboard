@@ -127,3 +127,11 @@
     @apply font-sans;
     }
 }
+
+
+.orbitron-font {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
