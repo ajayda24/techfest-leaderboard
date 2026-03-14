@@ -3,8 +3,9 @@
 import { useEffect, useRef } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "./ui/badge";
 
-const Card3D = ({ content, description }) => {
+const Card3D = ({ content, description, className, badgeText }) => {
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   const animationFrameRef = useRef(undefined);
@@ -100,17 +101,22 @@ const Card3D = ({ content, description }) => {
   }, []);
 
   return (
-    <div className="relative">
-      <div className="absolute -inset-px animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-red-500 opacity-70 blur-sm"></div>
-
+    <div className={`relative ${className}`}>
+      <div className="absolute inset-0 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-red-500 opacity-70 blur-sm"></div>
+      <Badge
+        variant="outline"
+        className="absolute z-10 left-1/2 -translate-x-1/2 -top-3 bg-amber-200 p-4 px-6 text-lg"
+      >
+        {badgeText}
+      </Badge>
       <Card
         ref={cardRef}
-        className="relative max-w-md rounded-xl border border-white/10"
+        className="relative max-w-md rounded-xl border border-white/10 p-10"
       >
-        <CardHeader>
-          <CardTitle>{content}</CardTitle>
+        <CardHeader className={"text-center"}>
+          <CardTitle className={"text-2xl"}>{content}</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6 text-sm">
+        <CardContent className="space-y-6 text-center text-xl">
           <p>{description}</p>
         </CardContent>
       </Card>
