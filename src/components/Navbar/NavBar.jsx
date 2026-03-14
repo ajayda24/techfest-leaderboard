@@ -7,18 +7,18 @@ import { BiUser } from "react-icons/bi";
 function NavBar() {
   return (
     <>
-      <div className="fixed w-full bottom-0 border-t border-gray-500/50 backdrop-blur-xl">
+      <div className="fixed w-full bottom-0 border-t border-gray-500/50 backdrop-blur-l">
         <div className="h-full flex justify-evenly items-end m-4">
-          <div className="text-3xl text-gray-700">
+          <div className="text-3xl text-gray-400 hover:text-gray-600 active:text-cyan-400">
             <HiOutlineCollection />
           </div>
-          <div className="text-3xl text-gray-700">
+          <div className="text-3xl text-gray-400">
             <LuCalendar />
           </div>
-          <div className="text-3xl text-gray-700">
+          <div className="text-3xl text-gray-400">
             <TbBell />
           </div>
-          <div className="text-3xl text-gray-700">
+          <div className="text-3xl text-gray-400">
             <BiUser />
           </div>
         </div>
