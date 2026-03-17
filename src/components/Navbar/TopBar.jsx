@@ -2,7 +2,7 @@ import React from "react";
 
 function TopBar() {
   return (
-    <div className="sticky w-full border-b border-gray-500/50 backdrop-blur-sm">
+    <div className="sticky w-full border-b border-gray-500/50 backdrop-blur-sm orbitron-font">
       <div className="mx-auto flex justify-between ">
         <div className="flex justify-start items-start mb-2">
           <div className="border border-gray-400 rounded-md p-4"></div>
@@ -13,7 +13,7 @@ function TopBar() {
           </div>
         </div>
         <div className="flex justify-end items-start m-2">
-          <div className="text-sm text-red-600">LIVE</div>
+          <div className="text-sm text-red-600 animate-pulse">LIVE</div>
         </div>
       </div>
     </div>
