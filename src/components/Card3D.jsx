@@ -113,7 +113,7 @@ const Card3D = ({
     <div className={`relative mt-10 ${crown && "z-20"} ${className}`}>
       {glow && (
         <>
-          <div class="absolute inset-0 bg-yellow-500 blur-md opacity-40"></div>
+          <div className="absolute inset-2 bg-yellow-300 blur-md opacity-10"></div>
           <div className="absolute inset-0 animate-pulse rounded-xl bg-linear-to-r from-yellow-500 via-orange-500 to-yellow-500 opacity-70 blur-xs"></div>
         </>
       )}
@@ -131,7 +131,7 @@ const Card3D = ({
       </Badge>
       <Card
         ref={cardRef}
-        className={`relative max-w-md rounded-xl border border-white/90 sm:p-10 bg-gray-950 text-white justify-center ${crown && "h-28 sm:h-50"}`}
+        className={`relative max-w-md rounded-xl border border-white/20 sm:p-10 bg-zinc-900 text-white justify-center ${crown && "h-28 sm:h-50"}`}
       >
         <CardContent className="text-center">
           <p
